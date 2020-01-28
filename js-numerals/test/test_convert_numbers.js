@@ -45,4 +45,28 @@ describe("Test convertNumbers function", function() {
       assert.equal(convertNumbers(404), "four hundred and four");
     });
   });
+
+  describe("Test for 4 to 6 digit numbers", function() {
+    it("should convert 2000", function() {
+      assert.equal(convertNumbers(2000), "two thousand");
+    });
+    it("should convert 2020", function() {
+      assert.equal(convertNumbers(2020), "two thousand and twenty");
+    });
+    it("should convert 3456", function() {
+      assert.equal(
+        convertNumbers(3456),
+        "three thousand four hundred and fifty-six"
+      );
+    });
+    it("should convert 10 000", function() {
+      assert.equal(convertNumbers(10000), "ten thousand");
+    });
+    it("should convert 654321", function() {
+      assert.equal(
+        convertNumbers(654321),
+        "six hundred and fifty-four thousand three hundred and twenty-one"
+      );
+    });
+  });
 });

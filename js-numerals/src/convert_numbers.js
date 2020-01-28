@@ -60,6 +60,21 @@ function convertNumbers(number) {
         convertNumbers(hundreds * 100) + " and " + convertNumbers(remainder)
       );
     }
+  } else if (number >= 1000 && number <= 999999) {
+    let thousands = Math.floor(number / 1000);
+    let remainder = number % 1000;
+
+    if (remainder == 0) {
+      return convertNumbers(thousands) + " thousand";
+    } else if (remainder < 100) {
+      return (
+        convertNumbers(thousands) + " thousand and " + convertNumbers(remainder)
+      );
+    } else {
+      return (
+        convertNumbers(thousands) + " thousand " + convertNumbers(remainder)
+      );
+    }
   }
 }
 
