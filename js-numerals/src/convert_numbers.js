@@ -50,9 +50,23 @@ function convertNumbers(number) {
         MULTIPLES_OF_TEN[Math.floor(number / 10)] + "-" + DIGITS[number % 10]
       );
     }
+  } else if (number >= 100 && number <= 999) {
+    let hundreds = Math.floor(number / 100);
+    let remainder = number % 100;
+    if (number % 100 == 0) {
+      return DIGITS[hundreds] + " hundred";
+    } else {
+      return (
+        convertNumbers(hundreds * 100) + " and " + convertNumbers(remainder)
+      );
+    }
   }
 }
 
 module.exports = {
   convertNumbers: convertNumbers
 };
+
+for (var i = 0; i < 500; i += 23) {
+  console.log(i, convertNumbers(i));
+}

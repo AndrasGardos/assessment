@@ -27,4 +27,22 @@ describe("Test convertNumbers function", function() {
       assert.equal(convertNumbers(50), "fifty");
     });
   });
+
+  describe("Test for three digit numbers", function() {
+    it("should convert 100", function() {
+      assert.equal(convertNumbers(100), "one hundred");
+    });
+    it("should convert 200", function() {
+      assert.equal(convertNumbers(200), "two hundred");
+    });
+    it("should convert 123", function() {
+      assert.equal(convertNumbers(123), "one hundred and twenty-three");
+    });
+    it("should convert 345", function() {
+      assert.equal(convertNumbers(345), "three hundred and fourty-five");
+    });
+    it("should convert 404", function() {
+      assert.equal(convertNumbers(404), "four hundred and four");
+    });
+  });
 });
