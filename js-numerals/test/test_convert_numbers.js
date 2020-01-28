@@ -11,6 +11,9 @@ describe("Test convertNumber function", function() {
   });
 
   describe("Test for double digit numbers", function() {
+    it("should convert 0", function() {
+      assert.equal(convertNumber(0), "zero");
+    });
     it("should convert 10", function() {
       assert.equal(convertNumber(10), "ten");
     });
