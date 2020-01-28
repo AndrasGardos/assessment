@@ -1,70 +1,70 @@
 const chai = require("chai");
 const assert = require("chai").assert;
-const convertNumbers = require("../src/convert_numbers.js").convertNumbers;
+const convertNumber = require("../src/convert_numbers.js").convertNumber;
 
-describe("Test convertNumbers function", function() {
+describe("Test convertNumber function", function() {
   describe("Test for single digit numbers", function() {
     it("should convert single digits", function() {
-      assert.equal(convertNumbers(4), "four");
-      assert.equal(convertNumbers(9), "nine");
+      assert.equal(convertNumber(4), "four");
+      assert.equal(convertNumber(9), "nine");
     });
   });
 
   describe("Test for double digit numbers", function() {
     it("should convert 10", function() {
-      assert.equal(convertNumbers(10), "ten");
+      assert.equal(convertNumber(10), "ten");
     });
     it("should convert 12", function() {
-      assert.equal(convertNumbers(12), "twelve");
+      assert.equal(convertNumber(12), "twelve");
     });
     it("should convert 17", function() {
-      assert.equal(convertNumbers(17), "seventeen");
+      assert.equal(convertNumber(17), "seventeen");
     });
     it("should convert 42", function() {
-      assert.equal(convertNumbers(42), "fourty-two");
+      assert.equal(convertNumber(42), "fourty-two");
     });
     it("should convert 50", function() {
-      assert.equal(convertNumbers(50), "fifty");
+      assert.equal(convertNumber(50), "fifty");
     });
   });
 
   describe("Test for three digit numbers", function() {
     it("should convert 100", function() {
-      assert.equal(convertNumbers(100), "one hundred");
+      assert.equal(convertNumber(100), "one hundred");
     });
     it("should convert 200", function() {
-      assert.equal(convertNumbers(200), "two hundred");
+      assert.equal(convertNumber(200), "two hundred");
     });
     it("should convert 123", function() {
-      assert.equal(convertNumbers(123), "one hundred and twenty-three");
+      assert.equal(convertNumber(123), "one hundred and twenty-three");
     });
     it("should convert 345", function() {
-      assert.equal(convertNumbers(345), "three hundred and fourty-five");
+      assert.equal(convertNumber(345), "three hundred and fourty-five");
     });
     it("should convert 404", function() {
-      assert.equal(convertNumbers(404), "four hundred and four");
+      assert.equal(convertNumber(404), "four hundred and four");
     });
   });
 
   describe("Test for 4 to 6 digit numbers", function() {
     it("should convert 2000", function() {
-      assert.equal(convertNumbers(2000), "two thousand");
+      assert.equal(convertNumber(2000), "two thousand");
     });
     it("should convert 2020", function() {
-      assert.equal(convertNumbers(2020), "two thousand and twenty");
+      assert.equal(convertNumber(2020), "two thousand and twenty");
     });
     it("should convert 3456", function() {
       assert.equal(
-        convertNumbers(3456),
+        convertNumber(3456),
         "three thousand four hundred and fifty-six"
       );
     });
     it("should convert 10 000", function() {
-      assert.equal(convertNumbers(10000), "ten thousand");
+      assert.equal(convertNumber(10000), "ten thousand");
     });
     it("should convert 654321", function() {
       assert.equal(
-        convertNumbers(654321),
+        convertNumber(654321),
         "six hundred and fifty-four thousand three hundred and twenty-one"
       );
     });

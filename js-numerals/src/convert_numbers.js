@@ -37,7 +37,7 @@ const MULTIPLES_OF_TEN = [
   "ninety"
 ];
 
-function convertNumbers(number) {
+function convertNumber(number) {
   if (number >= 0 && number <= 9) {
     return DIGITS[number];
   } else if (number >= 10 && number <= 19) {
@@ -56,32 +56,28 @@ function convertNumbers(number) {
     if (number % 100 == 0) {
       return DIGITS[hundreds] + " hundred";
     } else {
-      return (
-        convertNumbers(hundreds * 100) + " and " + convertNumbers(remainder)
-      );
+      return convertNumber(hundreds * 100) + " and " + convertNumber(remainder);
     }
   } else if (number >= 1000 && number <= 999999) {
     let thousands = Math.floor(number / 1000);
     let remainder = number % 1000;
 
     if (remainder == 0) {
-      return convertNumbers(thousands) + " thousand";
+      return convertNumber(thousands) + " thousand";
     } else if (remainder < 100) {
       return (
-        convertNumbers(thousands) + " thousand and " + convertNumbers(remainder)
+        convertNumber(thousands) + " thousand and " + convertNumber(remainder)
       );
     } else {
-      return (
-        convertNumbers(thousands) + " thousand " + convertNumbers(remainder)
-      );
+      return convertNumber(thousands) + " thousand " + convertNumber(remainder);
     }
   }
 }
 
 module.exports = {
-  convertNumbers: convertNumbers
+  convertNumber: convertNumber
 };
 
 for (var i = 0; i < 500; i += 23) {
-  console.log(i, convertNumbers(i));
+  console.log(i, convertNumber(i));
 }
