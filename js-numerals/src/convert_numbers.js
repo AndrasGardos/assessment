@@ -37,6 +37,14 @@ const MULTIPLES_OF_TEN = [
   "ninety"
 ];
 
+const NUMBER_GROUP_NAMES = [
+  "thousand",
+  "million",
+  "billion",
+  "trillion",
+  "quadrillion"
+];
+
 function convertNumber(number) {
   if (number >= 0 && number <= 9) {
     return DIGITS[number];
@@ -58,45 +66,42 @@ function convertNumber(number) {
     } else {
       return convertNumber(hundreds * 100) + " and " + convertNumber(remainder);
     }
-  } else if (number >= 1000 && number <= 999999) {
-    let thousands = Math.floor(number / 1000);
-    let remainder = number % 1000;
+  } else {
+    return convertBigNumber(number);
+  }
+}
 
-    if (remainder == 0) {
-      return convertNumber(thousands) + " thousand";
-    } else if (remainder < 100) {
-      return (
-        convertNumber(thousands) + " thousand and " + convertNumber(remainder)
-      );
-    } else {
-      return convertNumber(thousands) + " thousand " + convertNumber(remainder);
-    }
-  } else if (number >= 1000000 && number <= 999999999) {
-    let millions = Math.floor(number / 1000000);
-    let remainder = number % 1000000;
+function convertBigNumber(number) {
+  const biggestNumberGroupLog = Math.floor(Math.log10(number) / 3) * 3;
+  const biggestNumberGroup = Math.pow(10, biggestNumberGroupLog);
+  const biggestNumberGroupName =
+    NUMBER_GROUP_NAMES[biggestNumberGroupLog / 3 - 1];
+  const countOfBiggestNumberGroup = Math.floor(number / biggestNumberGroup);
+  const remainder = number % biggestNumberGroup;
 
-    if (remainder == 0) {
-      return convertNumber(millions) + " million";
-    } else if (remainder < 100) {
-      return (
-        convertNumber(millions) + " million and " + convertNumber(remainder)
-      );
-    } else {
-      return convertNumber(millions) + " million " + convertNumber(remainder);
-    }
-  } else if (number >= 1000000000 && number <= 999999999999) {
-    let billions = Math.floor(number / 1000000000);
-    let remainder = number % 1000000000;
-
-    if (remainder == 0) {
-      return convertNumber(billions) + " billion";
-    } else if (remainder < 100) {
-      return (
-        convertNumber(billions) + " billion and " + convertNumber(remainder)
-      );
-    } else {
-      return convertNumber(billions) + " billion " + convertNumber(remainder);
-    }
+  if (remainder == 0) {
+    // we are done
+    return (
+      convertNumber(countOfBiggestNumberGroup) + " " + biggestNumberGroupName
+    );
+  } else if (remainder < 100) {
+    // we need to add "and", because there is no hundreds
+    return (
+      convertNumber(countOfBiggestNumberGroup) +
+      " " +
+      biggestNumberGroupName +
+      " and " +
+      convertNumber(remainder)
+    );
+  } else {
+    // the remainder is bigger than 100, call convertNumber on it
+    return (
+      convertNumber(countOfBiggestNumberGroup) +
+      " " +
+      biggestNumberGroupName +
+      " " +
+      convertNumber(remainder)
+    );
   }
 }
 

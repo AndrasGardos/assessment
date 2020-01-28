@@ -102,4 +102,20 @@ describe("Test convertNumber function", function() {
       );
     });
   });
+
+  describe("Test for 12 to 15 digit numbers", function() {
+    it("should convert 2 000 000 000 000", function() {
+      assert.equal(convertNumber(2000000000), "two billion");
+    });
+
+    it("should convert 3 141 592 653 589 793", function() {
+      assert.equal(
+        convertNumber(3141592653589793),
+        "three quadrillion one hundred and fourty-one " +
+          "trillion five hundred and ninety-two billion " +
+          "six hundred and fifty-three million five hundred " +
+          "and eighty-nine thousand seven hundred and ninety-three"
+      );
+    });
+  });
 });
