@@ -27,6 +27,6 @@ function handleNumberChange(e) {
   } catch (error) {
     textOutput.style.color = "red";
     textOutput.innerHTML =
-      "Some nexpected error happened while converting your integer :(";
+      "Some unexpected error happened while converting your integer :(";
   }
 }
