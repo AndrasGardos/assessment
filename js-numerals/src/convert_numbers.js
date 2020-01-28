@@ -46,6 +46,12 @@ const NUMBER_GROUP_NAMES = [
 ];
 
 function convertNumber(number) {
+  if (!Number.isSafeInteger(number)) {
+    throw new Error(
+      "Can't convert " + number + ",because it is not a safe integer!"
+    );
+  }
+
   if (number < 0) {
     return "minus " + convertNumber(-number);
   }

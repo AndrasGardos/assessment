@@ -130,4 +130,18 @@ describe("Test convertNumber function", function() {
       assert.equal(convertNumber(-404), "minus four hundred and four");
     });
   });
+
+  describe("Test error checking", function() {
+    it("should throw error if number is a string", function() {
+      assert.throw(_ => convertNumber("not a number!"));
+    });
+
+    it("should throw error if argument is empty", function() {
+      assert.throw(_ => convertNumber());
+    });
+
+    it("should throw error if argument is not a safe integer", function() {
+      assert.throw(_ => convertNumber(9123137219873982173819273));
+    });
+  });
 });
