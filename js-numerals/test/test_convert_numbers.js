@@ -118,4 +118,16 @@ describe("Test convertNumber function", function() {
       );
     });
   });
+
+  describe("Test for negative numbers", function() {
+    it("should convert - 123 456 789", function() {
+      assert.equal(
+        convertNumber(-123456789),
+        "minus one hundred and twenty-three million four hundred and fifty-six thousand seven hundred and eighty-nine"
+      );
+    });
+    it("should convert -404", function() {
+      assert.equal(convertNumber(-404), "minus four hundred and four");
+    });
+  });
 });

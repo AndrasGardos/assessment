@@ -46,6 +46,10 @@ const NUMBER_GROUP_NAMES = [
 ];
 
 function convertNumber(number) {
+  if (number < 0) {
+    return "minus " + convertNumber(-number);
+  }
+
   if (number >= 0 && number <= 9) {
     return DIGITS[number];
   } else if (number >= 10 && number <= 19) {
