@@ -1,25 +1,19 @@
-# JavaScript/Front-end Developer - Exercise 1
+# Number to text converter
 
-## Instructions
+Converts integers between +9 007 199 254 740 991 and -9 007 199 254 740 991 to their text representations.
 
-- Fork this project.
-- Write tests.
-- Don't use external libraries for the conversion.
-- Commit the important milestones and not just the final result.
+## Running locally
 
-## Exercise description
+With http-server
 
-Create an application that contains a web form, which has a numeric input field and a submit button.
+```
+npm install http-server -g
+http-server -o
+```
 
-When the user gives an arabic number, the system shows the english phrase of that number.
+## Testing
 
-For example:
-<pre>
-7    == seven
-42   == forty-two
-2001 == two thousand and one
-1999 == nineteen hundred and ninety-nine
-17999 == seventeen thousand nine hundred and ninety-nine
-</pre>
-
-That's all.
+```
+$ npm install
+$ npm test
+```
