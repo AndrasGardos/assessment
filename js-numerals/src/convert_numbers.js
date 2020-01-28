@@ -84,13 +84,22 @@ function convertNumber(number) {
     } else {
       return convertNumber(millions) + " million " + convertNumber(remainder);
     }
+  } else if (number >= 1000000000 && number <= 999999999999) {
+    let billions = Math.floor(number / 1000000000);
+    let remainder = number % 1000000000;
+
+    if (remainder == 0) {
+      return convertNumber(billions) + " billion";
+    } else if (remainder < 100) {
+      return (
+        convertNumber(billions) + " billion and " + convertNumber(remainder)
+      );
+    } else {
+      return convertNumber(billions) + " billion " + convertNumber(remainder);
+    }
   }
 }
 
 module.exports = {
   convertNumber: convertNumber
 };
-
-for (var i = 0; i < 500; i += 23) {
-  console.log(i, convertNumber(i));
-}

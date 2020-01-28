@@ -84,4 +84,19 @@ describe("Test convertNumber function", function() {
       );
     });
   });
+
+  describe("Test for 10 to 12 digit numbers", function() {
+    it("should convert 2 000 000 000", function() {
+      assert.equal(convertNumber(2000000000), "two billion");
+    });
+    it("should convert 3 000 001", function() {
+      assert.equal(convertNumber(3000000001), "three billion and one");
+    });
+    it("should convert 987 123 456 789", function() {
+      assert.equal(
+        convertNumber(987123456789),
+        "nine hundred and eighty-seven billion one hundred and twenty-three million four hundred and fifty-six thousand seven hundred and eighty-nine"
+      );
+    });
+  });
 });
