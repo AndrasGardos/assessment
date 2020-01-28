@@ -62,10 +62,25 @@ describe("Test convertNumber function", function() {
     it("should convert 10 000", function() {
       assert.equal(convertNumber(10000), "ten thousand");
     });
-    it("should convert 654321", function() {
+    it("should convert 654 321", function() {
       assert.equal(
         convertNumber(654321),
         "six hundred and fifty-four thousand three hundred and twenty-one"
+      );
+    });
+  });
+
+  describe("Test for 7 to 9 digit numbers", function() {
+    it("should convert 2 000 000", function() {
+      assert.equal(convertNumber(2000000), "two million");
+    });
+    it("should convert 3 000 001", function() {
+      assert.equal(convertNumber(3000001), "three million and one");
+    });
+    it("should convert 123 456 789", function() {
+      assert.equal(
+        convertNumber(123456789),
+        "one hundred and twenty-three million four hundred and fifty-six thousand seven hundred and eighty-nine"
       );
     });
   });

@@ -71,6 +71,19 @@ function convertNumber(number) {
     } else {
       return convertNumber(thousands) + " thousand " + convertNumber(remainder);
     }
+  } else if (number >= 1000000 && number <= 999999999) {
+    let millions = Math.floor(number / 1000000);
+    let remainder = number % 1000000;
+
+    if (remainder == 0) {
+      return convertNumber(millions) + " million";
+    } else if (remainder < 100) {
+      return (
+        convertNumber(millions) + " million and " + convertNumber(remainder)
+      );
+    } else {
+      return convertNumber(millions) + " million " + convertNumber(remainder);
+    }
   }
 }
 
