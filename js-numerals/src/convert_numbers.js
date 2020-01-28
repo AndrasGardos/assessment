@@ -100,6 +100,8 @@ function convertNumber(number) {
   }
 }
 
-module.exports = {
-  convertNumber: convertNumber
-};
+try {
+  module.exports = {
+    convertNumber: convertNumber
+  };
+} catch (e) {}
