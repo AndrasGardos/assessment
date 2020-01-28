@@ -14,12 +14,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-#number-to-convert {
+#number-input {
   width: 100%;
   font-size: 5vmin;
   text-align: center;
 }
 
-#converted-number {
+#converted-number-output {
   text-align: center;
 }
